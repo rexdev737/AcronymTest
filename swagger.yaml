@@ -1,0 +1,103 @@
+tags:
+- name: acronyms
+  description: acronyms API
+
+paths:
+# [GET] acronyms
+  /acronyms:
+    get:
+      tags:
+      - acronyms
+      summary: Find All Acronyms
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] acronyms
+    post:
+      tags:
+      - acronyms
+      summary: Add Acronym
+      parameters:
+      - name: body
+        in: body
+        description: acronym Data
+        required: true
+        schema:
+          $ref: '#/definitions/acronyms'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] acronyms/name
+    put:
+      tags:
+      - acronyms
+      summary: Update Acronym By Name
+      parameters:
+      - name: name
+        in: path
+        description: acronym Name
+        required: true
+        type: string
+      - name: body
+        in: body
+        description: acronym Data
+        required: true
+        schema:
+          $ref: '#/definitions/acronyms'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] acronyms/name
+    delete:
+      tags:
+      - acronyms
+      summary: Delete Acronym By Name
+      parameters:
+      - name: name
+        in: path
+        description: acronym Name
+        required: true
+        type: string
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  acronyms:
+    type: object
+    required:
+        - name
+        - description
+    properties:
+      name:
+        type: string
+        description: acronym Name
+      description:
+        type: string
+        description: acronym description
+
+schemes:
+ - https
+ - http
