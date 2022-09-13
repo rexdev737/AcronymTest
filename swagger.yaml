@@ -9,7 +9,7 @@ info:
 tags:
 - name: acronyms
   description: acronyms API
-host: "localhost:3000"
+host: "g2iacronymnodetest.herokuapp.com/"
 
 paths:
 # [GET] acronyms
@@ -120,3 +120,4 @@ definitions:
 
 schemes:
  - http
+ - https
