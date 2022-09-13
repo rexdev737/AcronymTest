@@ -1,8 +1,15 @@
 swagger: "2.0"
+info:
+  description: "This is G2i Node Test"
+  version: "1.0.0"
+  title: "Acronym"
+  contact:
+    email: "rexdev737@gmail.com"
 
 tags:
 - name: acronyms
   description: acronyms API
+host: "localhost:3000"
 
 paths:
 # [GET] acronyms
@@ -11,6 +18,16 @@ paths:
       tags:
       - acronyms
       summary: Find All Acronyms
+      parameters:
+        - in: query
+          name: from
+          type: integer
+        - in: query
+          name: limit
+          type: integer
+        - in: query
+          name: search
+          type: string
       responses:
         200:
           description: 'OK'
@@ -40,13 +57,14 @@ paths:
           description: 'Server Error'
 
 # [PUT] acronyms/name
+  /acronyms/{name}:
     put:
       tags:
       - acronyms
       summary: Update Acronym By Name
       parameters:
-      - name: name
-        in: path
+      - in: path
+        name: name
         description: acronym Name
         required: true
         type: string
@@ -101,5 +119,4 @@ definitions:
         description: acronym description
 
 schemes:
- - https
  - http

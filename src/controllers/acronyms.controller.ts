@@ -10,7 +10,7 @@ class AcronymsController {
     try {
       let { from, limit, search } = req.query;
 
-      if (!from) from = '0';
+      if (!from) from = '1';
       if (!limit) limit = '10';
       if (!search) search = '';
 

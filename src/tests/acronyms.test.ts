@@ -12,14 +12,19 @@ afterAll(async () => {
 describe('Testing Acronyms', () => {
   describe('[GET] /acronyms', () => {
     it('response statusCode 200 / findAll', () => {
+      const from = 1;
+      const limit = 10;
+      const search = 'ZZZZ';
       const searchAcronyms: Acronym[] = getData().acronyms.filter((acronym: Acronym) => {
-        return acronym.name === 'ZZZZ' ? acronym : null;
+        return acronym.name === search ? acronym : null;
       });
-      const acronyms: Acronym[] = searchAcronyms.slice(0, 10);
+      const acronyms: Acronym[] = searchAcronyms.slice(from - 1, from + limit - 1);
       const acronymsRoute = new AcronymsRoute();
       const app = new App([acronymsRoute]);
 
-      return request(app.getServer()).get(`${acronymsRoute.path}?from=1&limit=10&search=ZZZZ`).expect(200, { data: acronyms, message: 'findAll' });
+      return request(app.getServer())
+        .get(`${acronymsRoute.path}?from=${from}&limit=${limit}&search=${search}`)
+        .expect(200, { data: acronyms, message: 'findAll' });
     });
   });
 
