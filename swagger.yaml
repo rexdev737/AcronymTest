@@ -9,7 +9,7 @@ info:
 tags:
 - name: acronyms
   description: acronyms API
-host: "g2iacronymnodetest.herokuapp.com/"
+host: "g2iacronymnodetest.herokuapp.com"
 
 paths:
 # [GET] acronyms
